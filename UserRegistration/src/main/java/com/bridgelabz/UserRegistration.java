@@ -5,11 +5,12 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 
+
         /**
-         *
          * @param FirstName
+         * @return
          */
-        public static void toCheckForFirstNameValidation(String FirstName){
+        public static boolean toCheckForFirstNameValidation(String FirstName){
             /**
              * regex pattern is taken;where starting should be Capital letter and then min of 3 characters can be taken
              * pattern is then matched with user input name by using matcher class
@@ -17,7 +18,7 @@ public class UserRegistration {
              * else invalid username
              */
             boolean isFirstName;
-            String regexName = "^[A-Z]{1}[a-z A-Z]{3,}$";
+            String regexName = "^[A-Z][a-z]{3,}$";
             Pattern object = Pattern.compile(regexName);
             Matcher objectMatcher = object.matcher(FirstName);
             isFirstName = objectMatcher.matches();
@@ -27,11 +28,13 @@ public class UserRegistration {
             else{
                 System.out.println(FirstName + " is an invalid user name");
             }
+
+            return isFirstName;
         }
 
-        public static void toCheckForLastNameValidation(String LastName){
+        public static boolean toCheckForLastNameValidation(String LastName){
             boolean isLastName;
-            String regexName = "^[A-Z]{1}[A-Z a-z]{3,}$";
+            String regexName = "^[A-Z][a-z]{3,}$";
             Pattern object = Pattern.compile(regexName);
             Matcher objectMatcher = object.matcher(LastName);
             isLastName = objectMatcher.matches();
@@ -41,8 +44,9 @@ public class UserRegistration {
             else{
                 System.out.println(LastName + " is an invalid user name");
             }
+            return isLastName;
         }
-        public static void toCheckForEmailValidation(String email){
+        public static boolean toCheckForEmailValidation(String email){
             boolean isEmailId;
             String emailIdRegex ="^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9A-Za-z]+([.][a-zA-Z]{2,4})*$";//abc.xyz@bl.co.in
             Pattern patternObj = Pattern.compile(emailIdRegex);
@@ -53,6 +57,7 @@ public class UserRegistration {
                 System.out.println(email+" is a Valid Email Id\n");
             else
                 System.out.println(email+" is a Invalid Email Id");
+            return isEmailId;
         }
 
         public static void toCheckForPhoneNumberValidation(String mobileNumber){
@@ -70,7 +75,7 @@ public class UserRegistration {
             else
                 System.out.println(mobileNumber+" is a Invalid  Number");
         }
-        public static void toCheckPasswordValidation(String password){
+        public static boolean toCheckPasswordValidation(String password){
             boolean isPassword;
             String mobileNumberRegex = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&-+=()]).{8,}$";
             Pattern obj = Pattern.compile(mobileNumberRegex);
@@ -82,6 +87,7 @@ public class UserRegistration {
             else
                 System.out.println(password+" is a Invalid  password");
 
+            return isPassword;
         }
     }
 
